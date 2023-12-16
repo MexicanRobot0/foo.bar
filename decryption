@@ -1,0 +1,20 @@
+>>> import base64
+>>>
+>>> # Encrypted base64-encoded string
+>>> encrypted_string = b'FlMEEA8HFh4HUEVWRFQKBhIEGENfTVMUCgAIFgwTAgBLRElNUxIWGAEWABETQkBEVAgSEQoeEABK\nVE1FSw0dDgYSAQUGHwhTW0VLBRAFHRITCQkWAwBQRVZEVBgaGwoPDxYJU1tFSxYSDxYeER9DU1dU\nUBYNAhZKWFdCCgscSlRNRUsTGgNVUBg='
+>>>
+>>> # Key
+>>> key = "mtwelds"
+>>>
+>>> # Decode the base64-encoded string
+>>> decoded_bytes = base64.b64decode(encrypted_string)
+>>>
+>>> # XOR each byte with the corresponding byte from the key
+>>> decrypted_bytes = bytes(x ^ ord(key[i % len(key)]) for i, x in enumerate(decoded_bytes))
+>>>
+>>> # Decode the bytes to string
+>>> decrypted_string = decrypted_bytes.decode('utf-8', errors='replace')
+>>>
+>>> print(decrypted_string)
+{'success' : 'great', 'colleague' : 'esteemed', 'efforts' : 'incredible', 'achievement' : 'unlocked', 'rabbits' : 'safe', 'foo' : 'win!'}
+>>>
